@@ -1,5 +1,5 @@
 class CreateStatementUseCase {
-  async execute() {}
+  async execute({ id, amount, date, type }: ICreateStatement) {}
 }
 
 export { CreateStatementUseCase };
