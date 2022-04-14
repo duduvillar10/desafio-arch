@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { CreateStatementController } from "../../../../modules/statements/usecases/createStatement/CreateStatementController";
+import { CreateStatementController } from "../../../application/useCases/createStatement/CreateStatementController";
 
 const statementsRoutes = Router();
 

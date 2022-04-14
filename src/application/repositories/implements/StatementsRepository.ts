@@ -1,4 +1,7 @@
-import { IStatement, Statement } from "../../entities/Statement";
+import {
+  IStatement,
+  Statement,
+} from "../../../modules/statements/infra/entities/Statement";
 import { Model } from "mongoose";
 import { IStatementsRepository } from "../IStatementRepository";
 
