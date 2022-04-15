@@ -1,7 +1,23 @@
-import { IStatement } from "../../../modules/statements/infra/entities/Statement";
+import { inject, injectable } from "tsyringe";
+import { IStatementsRepository } from "../../repositories/IStatementRepository";
 
+@injectable()
 class CreateStatementUseCase {
-  async execute({ id, amount, date, type }: ICreateStatement) {}
+  constructor(
+    @inject("StatementsRepository")
+    private statementsRepositories: IStatementsRepository
+  ) {}
+
+  async execute({ id, amount, date, type }: ICreateStatement) {
+    const statement = await this.statementsRepositories.create({
+      id,
+      amount,
+      date,
+      type,
+    });
+
+    return statement;
+  }
 }
 
 export { CreateStatementUseCase };
