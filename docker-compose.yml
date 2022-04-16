@@ -12,15 +12,15 @@ services:
     image: 'redis'
     ports:
       - "6379:6379"
-  app:
+  transacao_api:
     build: 
-      context: .
+      context: ./transacao-api
       dockerfile: Dockerfile
     container_name: transacao_api
     ports:
       - 3333:3333
     volumes:
-      - .:/user/app
+      - ./transacao_api:/user/transacao_api
     links:
       - database_mongo
       - redis-server
