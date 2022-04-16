@@ -3,8 +3,8 @@ import { CreateStatementController } from "../../../application/useCases/createS
 
 const statementsRoutes = Router();
 
-const createStatementUseCase = new CreateStatementController();
+const createStatementController = new CreateStatementController();
 
-statementsRoutes.post("/", createStatementUseCase.handle);
+statementsRoutes.post("/", createStatementController.handle);
 
 export { statementsRoutes };

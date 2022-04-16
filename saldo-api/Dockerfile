@@ -1,13 +1,12 @@
 FROM node
 
-WORKDIR /user/transacao-api
-
+WORKDIR /user/saldo-api
 COPY package.json ./
 
 RUN npm install
 
 COPY . .
 
-EXPOSE 3333
+EXPOSE 3331
 
 CMD ["npm","run","dev"]

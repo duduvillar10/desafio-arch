@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
 
-  database_mongo:
+  database-mongo:
     image: mongo
     restart: always
     environment:
@@ -12,18 +12,33 @@ services:
     image: 'redis'
     ports:
       - "6379:6379"
-  transacao_api:
+  transacao-api:
     build: 
       context: ./transacao-api
       dockerfile: Dockerfile
-    container_name: transacao_api
+    container_name: transacao-api
     ports:
       - 3333:3333
     volumes:
-      - ./transacao_api:/user/transacao_api
+      - ./transacao-api:/user/transacao-api
     links:
-      - database_mongo
+      - database-mongo
       - redis-server
     depends_on:
-      - database_mongo
+      - database-mongo
+      - redis-server
+  saldo-api:
+    build: 
+      context: ./saldo-api
+      dockerfile: Dockerfile
+    container_name: saldo-api
+    ports:
+      - 3331:3331
+    volumes:
+      - ./saldo-api:/user/saldo-api
+    links:
+      - database-mongo
+      - redis-server
+    depends_on:
+      - database-mongo
       - redis-server
