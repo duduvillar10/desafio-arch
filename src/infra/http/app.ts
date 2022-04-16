@@ -1,12 +1,14 @@
 import "reflect-metadata";
 import express from "express";
 import { router } from "./routes";
-import createConnection from "../database/mongodb";
+import createMongoConnection from "../database/mongodb";
+import createRedisConnection from "../database/redis";
 import { container } from "tsyringe";
 import { IStatementsRepository } from "../../application/repositories/IStatementRepository";
 import { StatementsRepository } from "../../application/repositories/implements/StatementsRepository";
 
-createConnection();
+createMongoConnection();
+createRedisConnection();
 
 container.registerSingleton<IStatementsRepository>(
   "StatementsRepository",

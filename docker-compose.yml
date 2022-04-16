@@ -10,6 +10,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: 12345
   redis-server: 
     image: 'redis'
+    ports:
+      - "6379:6379"
   app:
     build: 
       context: .
@@ -21,5 +23,7 @@ services:
       - .:/user/app
     links:
       - database_mongo
+      - redis-server
     depends_on:
       - database_mongo
+      - redis-server
