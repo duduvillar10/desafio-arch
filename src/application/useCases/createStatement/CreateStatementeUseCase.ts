@@ -11,17 +11,17 @@ class CreateStatementUseCase {
     private redisRepository: RedisRepository
   ) {}
 
-  async execute({ id, amount, date, type }: ICreateStatement) {
+  async execute({ user_id, amount, date, type }: ICreateStatement) {
     const statement = await this.statementsRepositories.create({
-      id,
+      user_id,
       amount,
       date,
       type,
     });
 
-    const balance = await this.statementsRepositories.getUserBalance(id);
+    const balance = await this.statementsRepositories.getUserBalance(user_id);
 
-    await this.redisRepository.create(id, balance);
+    await this.redisRepository.create(user_id, balance);
 
     return statement;
   }

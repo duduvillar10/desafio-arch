@@ -5,7 +5,7 @@ enum OperatinoType {
 }
 
 interface IStatement {
-  id: string;
+  user_id: string;
 
   amount: number;
 
@@ -15,7 +15,7 @@ interface IStatement {
 }
 
 const schema = new Schema<IStatement>({
-  id: { type: String, required: true },
+  user_id: { type: String, required: true },
   amount: { type: Number, required: true },
   date: { type: Date, required: true },
   type: { type: String, enum: OperatinoType, required: true },

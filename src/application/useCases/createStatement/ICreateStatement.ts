@@ -1,5 +1,5 @@
 interface ICreateStatement {
-  id: string;
+  user_id: string;
   amount: number;
   type: string;
   date: Date;

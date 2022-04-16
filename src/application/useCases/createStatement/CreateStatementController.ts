@@ -4,12 +4,12 @@ import { CreateStatementUseCase } from "./CreateStatementeUseCase";
 
 class CreateStatementController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id, amount, date, type } = request.body;
+    const { user_id, amount, date, type } = request.body;
 
     const createStatementUseCase = container.resolve(CreateStatementUseCase);
 
     const statement = await createStatementUseCase.execute({
-      id,
+      user_id,
       amount,
       date,
       type,
