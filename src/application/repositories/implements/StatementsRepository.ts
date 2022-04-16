@@ -10,12 +10,17 @@ class StatementsRepository implements IStatementsRepository {
   }
 
   async create({
-    id,
+    user_id,
     amount,
     date,
     type,
   }: ICreateStatement): Promise<IStatement> {
-    const statement = new this.statementsRepository({ id, amount, date, type });
+    const statement = new this.statementsRepository({
+      user_id,
+      amount,
+      date,
+      type,
+    });
 
     await statement.save();
 

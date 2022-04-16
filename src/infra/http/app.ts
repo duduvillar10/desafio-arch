@@ -2,7 +2,7 @@ import "reflect-metadata";
 import express from "express";
 import { router } from "./routes";
 import createMongoConnection from "../database/mongodb";
-import "./container";
+import "../container";
 
 createMongoConnection();
 
