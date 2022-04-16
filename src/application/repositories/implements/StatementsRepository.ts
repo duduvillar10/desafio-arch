@@ -21,6 +21,24 @@ class StatementsRepository implements IStatementsRepository {
 
     return statement;
   }
+
+  async getStatementsById(id: string) {
+    return await this.statementsRepository.find({ id });
+  }
+
+  async getUserBalance(id: string) {
+    const statements = await this.statementsRepository.find({ id });
+
+    const balance = statements.reduce((acc, operation) => {
+      if (operation.type === "deposit") {
+        return acc + operation.amount;
+      } else {
+        return acc - operation.amount;
+      }
+    }, 0);
+
+    return balance;
+  }
 }
 
 export { StatementsRepository };
