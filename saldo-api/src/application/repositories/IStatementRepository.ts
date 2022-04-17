@@ -1,8 +1,8 @@
 import { IStatement } from "../../domain/Statement";
 
 interface IStatementsRepository {
-  getStatementsById(id: string);
-  getUserBalance(id: string);
+  getStatementsById(user_id: string);
+  getUserBalance(user_id: string);
 }
 
 export { IStatementsRepository };

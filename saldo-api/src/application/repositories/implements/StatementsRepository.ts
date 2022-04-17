@@ -9,12 +9,12 @@ class StatementsRepository implements IStatementsRepository {
     this.statementsRepository = Statement;
   }
 
-  async getStatementsById(id: string) {
-    return await this.statementsRepository.find({ id });
+  async getStatementsById(user_id: string) {
+    return await this.statementsRepository.find({ user_id });
   }
 
-  async getUserBalance(id: string) {
-    const statements = await this.statementsRepository.find({ id });
+  async getUserBalance(user_id: string) {
+    const statements = await this.statementsRepository.find({ user_id });
 
     const balance = statements.reduce((acc, operation) => {
       if (operation.type === "deposit") {
