@@ -1,5 +1,6 @@
 import NodeCache from "node-cache";
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../infra/errors/AppError";
 import { RedisRepository } from "../../repositories/implements/RedisRepository";
 import { IStatementsRepository } from "../../repositories/IStatementRepository";
 
@@ -21,7 +22,7 @@ class GetBalanceUseCase {
       const newBalance = await this.statementsRepositories.getUserBalance(id);
 
       if (!newBalance) {
-        throw new Error("user não encontrado");
+        throw new AppError("User not found");
       }
 
       await this.redisRepository.create(id, newBalance);
