@@ -8,7 +8,7 @@ interface IStatementsRepository {
     type,
   }: ICreateStatement): Promise<IStatement>;
   getStatementsById(user_id: string): Promise<IStatement[]>;
-  getUserBalance(user_id: string): Promise<number>;
+  getUserBalance(user_id: string): Promise<Number>;
 }
 
 export { IStatementsRepository };

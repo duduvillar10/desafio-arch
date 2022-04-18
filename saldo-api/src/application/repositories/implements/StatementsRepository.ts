@@ -9,11 +9,11 @@ class StatementsRepository implements IStatementsRepository {
     this.statementsRepository = Statement;
   }
 
-  async getStatementsById(user_id: string) {
+  async getStatementsById(user_id: string): Promise<IStatement[]> {
     return await this.statementsRepository.find({ user_id });
   }
 
-  async getUserBalance(user_id: string) {
+  async getUserBalance(user_id: string): Promise<Number> {
     const statements = await this.statementsRepository.find({ user_id });
 
     const balance = statements.reduce((acc, operation) => {

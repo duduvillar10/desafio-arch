@@ -32,7 +32,7 @@ class StatementsRepository implements IStatementsRepository {
     return statement;
   }
 
-  async getUserBalance(user_id: string): Promise<number> {
+  async getUserBalance(user_id: string): Promise<Number> {
     const statements = await this.statementsRepository.find({ user_id });
 
     const balance = statements.reduce((acc, operation) => {
