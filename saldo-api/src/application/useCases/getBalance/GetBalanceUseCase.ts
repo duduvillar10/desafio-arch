@@ -25,7 +25,7 @@ class GetBalanceUseCase {
         throw new AppError("User not found");
       }
 
-      await this.redisRepository.create(id, newBalance);
+      await this.redisRepository.create(id, String(newBalance));
     }
 
     this.nodeCache.set(id, await this.redisRepository.getOne(id), 60 * 15);
