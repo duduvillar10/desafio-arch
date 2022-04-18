@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { RedisRepository } from "../../repositories/implements/RedisRepository";
-import { IStatementsRepository } from "../../repositories/IStatementRepository";
+import { IStatementsRepository } from "../../repositories/IStatementsRepository";
 
 @injectable()
 class CreateStatementUseCase {
@@ -21,7 +21,7 @@ class CreateStatementUseCase {
 
     const balance = await this.statementsRepositories.getUserBalance(user_id);
 
-    await this.redisRepository.create(user_id, balance);
+    await this.redisRepository.create(user_id, String(balance));
 
     return statement;
   }

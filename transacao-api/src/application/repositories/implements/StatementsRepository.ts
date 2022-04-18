@@ -1,6 +1,6 @@
 import { IStatement, Statement } from "../../../domain/Statement";
 import { Model } from "mongoose";
-import { IStatementsRepository } from "../IStatementRepository";
+import { IStatementsRepository } from "../IStatementsRepository";
 
 class StatementsRepository implements IStatementsRepository {
   private statementsRepository: Model<IStatement>;
@@ -27,11 +27,12 @@ class StatementsRepository implements IStatementsRepository {
     return statement;
   }
 
-  async getStatementsById(user_id: string) {
-    return await this.statementsRepository.find({ user_id });
+  async getStatementsById(user_id: string): Promise<IStatement[]> {
+    const statement = await this.statementsRepository.find({ user_id });
+    return statement;
   }
 
-  async getUserBalance(user_id: string) {
+  async getUserBalance(user_id: string): Promise<number> {
     const statements = await this.statementsRepository.find({ user_id });
 
     const balance = statements.reduce((acc, operation) => {
