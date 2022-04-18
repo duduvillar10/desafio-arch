@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { CreateStatementUseCase } from "./CreateStatementeUseCase";
+import { CreateStatementUseCase } from "./CreateStatementUseCase";
 
 class CreateStatementController {
   async handle(request: Request, response: Response): Promise<Response> {
